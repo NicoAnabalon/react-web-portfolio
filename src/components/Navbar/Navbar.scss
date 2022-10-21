@@ -15,3 +15,31 @@
     border-color: white !important;
   }
 }
+
+.centered-buttongroup {
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-navbar-toolbar {
+  display: "flex";
+  justify-content: flex-start;
+
+  .logo {
+    padding: 0;
+  }
+
+  .icon-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-color: white !important;
+  }
+}
+
+.centered-buttongroup {
+  display: flex;
+  justify-content: center;
+}
