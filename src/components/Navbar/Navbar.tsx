@@ -63,7 +63,11 @@ const externalMenuOptions: ExternalMenuOptions[] = [
   },
 ];
 
-export const Navbar = () => {
+interface INavbarProps {
+  isMobile: boolean;
+}
+
+export const Navbar = ({ isMobile }: INavbarProps) => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -73,7 +77,6 @@ export const Navbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const isMobile = window.screen.width < 600;
 
   const handleExternalLink = (url: string) => {
     window.open(url, "_blank");
