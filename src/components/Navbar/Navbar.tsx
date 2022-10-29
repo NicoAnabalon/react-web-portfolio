@@ -23,7 +23,7 @@ import {
   Menu as MenuIcon,
 } from "@mui/icons-material";
 import "./Navbar.scss";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ExternalMenuOptions, MenuOptions } from "../../types";
 import { GITHUB_URL, LINKEDIN_URL } from "../../utils";
@@ -45,7 +45,7 @@ const menuOptions: MenuOptions[] = [
     id: "contact-me",
     name: "Contact Me",
     icon: <ContactMail />,
-    url: "/",
+    url: "/contact-me",
   },
 ];
 
@@ -70,6 +70,8 @@ export const Navbar = ({ isMobile }: INavbarProps) => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const { pathname } = useLocation();
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -111,6 +113,7 @@ export const Navbar = ({ isMobile }: INavbarProps) => {
                   <ListItem key={menuOption.id} disablePadding>
                     <ListItemButton
                       onClick={() => handleNavigate(`${menuOption.url}`)}
+                      className={pathname === menuOption.url ? "active" : ""}
                     >
                       <ListItemIcon>{menuOption.icon}</ListItemIcon>
                       <ListItemText primary={menuOption.name} />
@@ -151,11 +154,13 @@ export const Navbar = ({ isMobile }: INavbarProps) => {
             {menuOptions.map((menuOption) => (
               <Button
                 key={menuOption.id}
-                className="icon-container"
+                className={`icon-container ${
+                  menuOption.url === pathname ? "active" : ""
+                }`}
                 onClick={() => navigate(`${menuOption.url}`)}
               >
                 {menuOption.icon}
-                {menuOption.name}
+                <span>{menuOption.name}</span>
               </Button>
             ))}
           </ButtonGroup>

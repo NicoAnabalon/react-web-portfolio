@@ -43,3 +43,14 @@
   display: flex;
   justify-content: center;
 }
+
+.active {
+  background-color: white !important;
+
+  svg {
+    fill: #121212;
+  }
+  span {
+    color: #121212;
+  }
+}
