@@ -12,7 +12,6 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  SvgIconTypeMap,
   Toolbar,
 } from "@mui/material";
 import {
@@ -40,7 +39,7 @@ const menuOptions: MenuOptions[] = [
     id: "experience",
     name: "Experience",
     icon: <Timeline />,
-    url: "/",
+    url: "/experience",
   },
   {
     id: "contact-me",
@@ -78,6 +77,11 @@ export const Navbar = ({ isMobile }: INavbarProps) => {
     setAnchorEl(null);
   };
 
+  const handleNavigate = (url: string) => {
+    navigate(url);
+    handleClose();
+  };
+
   const handleExternalLink = (url: string) => {
     window.open(url, "_blank");
   };
@@ -105,7 +109,9 @@ export const Navbar = ({ isMobile }: INavbarProps) => {
               <List>
                 {menuOptions.map((menuOption) => (
                   <ListItem key={menuOption.id} disablePadding>
-                    <ListItemButton>
+                    <ListItemButton
+                      onClick={() => handleNavigate(`${menuOption.url}`)}
+                    >
                       <ListItemIcon>{menuOption.icon}</ListItemIcon>
                       <ListItemText primary={menuOption.name} />
                     </ListItemButton>

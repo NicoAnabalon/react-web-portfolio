@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Navbar } from "./components";
 import { useWindowSize } from "./hooks";
-import { Home } from "./views";
+import { Experience, Home } from "./views";
 
 function App() {
   const { width } = useWindowSize();
@@ -15,6 +15,10 @@ function App() {
       <Box sx={{ flex: 1 }}>
         <Routes>
           <Route path="/" element={<Home isMobile={isMobile} />} />
+          <Route
+            path="/experience"
+            element={<Experience isMobile={isMobile} />}
+          />
         </Routes>
       </Box>
     </Box>
