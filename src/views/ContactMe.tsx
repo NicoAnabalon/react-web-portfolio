@@ -3,7 +3,6 @@ import {
   Alert,
   Box,
   Button,
-  Paper,
   Snackbar,
   TextField,
   Tooltip,
