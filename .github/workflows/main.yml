@@ -1,4 +1,4 @@
-name: CI
+name: Build and Deploy
 
 on:
   push:
@@ -6,12 +6,11 @@ on:
       - main
 
 jobs:
-  build:
-
+  build-and-deploy:
     runs-on: ubuntu-latest
-
+    concurrency: ci-${{github.ref}}
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout
         uses: actions/checkout@v2
 
       - name: Build
@@ -24,6 +23,7 @@ jobs:
           REACT_APP_TEMPLATE_ID: ${{ secrets.REACT_APP_TEMPLATE_ID }}
 
       - name: Deploy
-        uses: NicoAnabalon/react-web-portfolio@main
+        uses:  JamesIves/github-pages-deploy-action@v4
         with:
           folder: build
+          branch: gh-pages
