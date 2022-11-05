@@ -26,22 +26,28 @@ const experiences: IExperience[] = [
     dates: ["Dicember 2021 - Present"],
     technologies: "React | Node.js | AWS | Git | PostgreSQL | MySQL | JS | CSS",
     summary: [
-      "Fullstack development, mainly with the use of React, NodeJS, PostgreSQL, MySQL and AWS.",
+      "I am working on a team responsible for satisfying analysts' needs to manage rental properties correctly.",
+      "Creation and maintenance of several web applications.",
+      "Creation and maintenance of several REST APIs.",
+      "Creation, management and maintenance of Amazon Web Services’ lambdas and containers.",
+      "Creation, management and maintenance of PostgreSQL and MySQL databases.",
     ],
   },
   {
     key: "kuantum-spa",
     companyName: "Kuantum Spa",
-    position: "Backend Developer",
+    position: "Software Developer",
     logoURL: KuantumLogo,
     backgroundColor: "white",
     dates: ["March 2021 - Dicember 2021"],
     technologies: "PostgreSQL | .NET | C# | React | JS | JasperReports",
     summary: [
-      "Create from scratch several modules of a health software for leading company in health industry in Chile",
-      "Microservices creation for integrations between different modules.",
-      "Creation and management of databases.",
-      "Reports creation using JasperReports and management of JasperReports Server.",
+      "Worked on a team responsible for creating new modules for a web application of the biggest company related to health software in Chile.",
+      "Created and developed several modules from scratch.",
+      "Created and developed several microservices responsible for the integration between modules.",
+      "Created and managed databases.",
+      "Created reports using JasperReports.",
+      "Managed a server dedicated for report generation using JasperServer.",
     ],
   },
   {
@@ -49,15 +55,15 @@ const experiences: IExperience[] = [
     companyName: "Febos Chile",
     logoURL: FebosLogo,
     backgroundColor: "white",
-    position: "IT Analyst",
+    position: "IT Operations Analyst",
     dates: ["March 2020 - March 2021", "January 2020 - February 2020"],
     technologies: "MySQL | JS | HTML | CSS | XSL | XML",
     summary: [
-      "Creation of personalized templates according to the needs of each customer.",
-      "Database management and reports generation.",
-      "Obtaining customer requirements.",
-      "Customer training.",
-      "Template creation for electronic documents retrieving information from XML files and adapted to each customer according to their needs.",
+      "Worked on the Operations team responsible for the customers’ needs.",
+      "Created and developed templates for tributary electronic documents, personalized for each customers’ needs and branding.",
+      "Managed a database and generated reports.",
+      "Obtained customers’ requirements.",
+      "Trained customers into how to use the web application.",
     ],
   },
 ];
@@ -106,13 +112,20 @@ export const ExperienceTimeline = ({ isMobile }: IExperienceTimelineProps) => {
             </>
           }
           backCard={
-            <Box component="ul">
-              {experience.summary.map((sum, index) => (
-                <Box component="li" key={index}>
-                  {sum}
-                </Box>
-              ))}
-            </Box>
+            <div>
+              <span>{experience.summary[0]}</span>
+              <Box component="ul" className="summary-list">
+                {experience.summary.map((sum, index) => {
+                  if (index === 0) return;
+
+                  return (
+                    <Box component={index === 0 ? "span" : "li"} key={index}>
+                      {sum}
+                    </Box>
+                  );
+                })}
+              </Box>
+            </div>
           }
         />
       ))}
