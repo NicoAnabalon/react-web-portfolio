@@ -116,7 +116,7 @@ export const ExperienceTimeline = ({ isMobile }: IExperienceTimelineProps) => {
               <span>{experience.summary[0]}</span>
               <Box component="ul" className="summary-list">
                 {experience.summary.map((sum, index) => {
-                  if (index === 0) return;
+                  if (index === 0) return null;
 
                   return (
                     <Box component={index === 0 ? "span" : "li"} key={index}>
