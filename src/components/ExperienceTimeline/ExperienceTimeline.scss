@@ -4,6 +4,27 @@
   align-items: center;
   width: 95%;
   margin: auto;
+
+  .flippable-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    flex-grow: 2;
+    height: 60%;
+    text-align: center;
+  }
+
+  .flippable-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    flex-grow: 2;
+    height: 40%;
+  }
 }
 
 .mobile {
@@ -27,11 +48,4 @@
 .technologies {
   margin: 10px auto !important;
   text-align: center;
-}
-
-.summary-list {
-  &li:first-child {
-    list-style: none;
-    left: -40px;
-  }
 }
